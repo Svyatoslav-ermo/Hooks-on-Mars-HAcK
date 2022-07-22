@@ -1,11 +1,11 @@
 import processing.serial.*;  //imports library used for wireless comm with the HC-05
 Serial myPort;               // declares Serial Port object from library
-String Text;
+String Text = "";
 
 void setup()
 {
  size(600,700);                         // create window of this size
- myPort=new Serial(this, "COM6", 115200);  //COM port will likely be different, try different ones until it works (usually one of COM3-COM7)
+ myPort=new Serial(this, "COM5", 115200);  //COM port will likely be different, try different ones until it works (usually one of COM3-COM7)
  myPort.bufferUntil('\n');               //delays calling serialEvent unitl reaching '\n'
 }
 
@@ -33,31 +33,26 @@ void draw()
   text(Text, 400, 600);           //draws text at x,y
     
   if (state == 1) {
-    myPort.write('l');            //writes to the Bluetooth Serial port
+    myPort.write('w');            //writes to the Bluetooth Serial port
     state = 0;
   } else if (state == 2) {
-    myPort.write('w');
-    state = 0;
-  } else if (state == 3) {
     myPort.write('s');
     state = 0;
   } else if (state == 3) {
     myPort.write('a');
     state = 0;
-  } else if (state == 3) {
+  } else if (state == 4) {
     myPort.write('d');
     state = 0;
-  } else if (state == 3) {
+  } else if (state == 5) {
     myPort.write('u');
     state = 0;
-  } else if (state == 3) {
+  } else if (state == 6) {
     myPort.write('j');
     state = 0;
-  }
+  } 
   
   delay(20);
-  
-  
 
 }
 
@@ -66,6 +61,12 @@ void keyPressed() {               //called whenever a key is pressed, key is aut
     state = 1;
   else if (key == 's')
     state = 2;
-  else if (key == 'l')
+  else if (key == 'a')
     state = 3;
+  else if (key == 'd')
+    state = 4;
+  else if (key == 'u')
+    state = 5;
+  else if (key == 'j')
+    state = 6;
 }
