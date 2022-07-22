@@ -14,6 +14,7 @@ void setup() {
   pinMode(BUTTON, INPUT);
 
   Serial.begin(115200);
+  Serial1.begin(9600); // Arduino Communication
   SerialBT.begin("ESP32");  //begins Bluetooth Serial connection
   Serial.println("Started successfully.");
 
@@ -30,12 +31,14 @@ void loop() {
   if (SerialBT.available()) //if there are bytes available in the buffer
     readIn = char(SerialBT.read()); //read in one and store it in readIn
 
-  if (readIn == 'w' && bright < 255 && bright > 0) {
-    bright += brightStep;
-    analogWrite(LED, bright);
+  if (readIn == 'w') {
+   // bright += brightStep;
+   // analogWrite(LED, bright);
+    Serial1.print('w');
     readIn = '\0';
-    delay(20);
   }
+
+  // Finish other if else statements for chars 's' 'a' 'd' 'u' 'j'
   else if (readIn == 's' && bright > 1) {
     bright -= brightStep;
     analogWrite(LED, bright);
