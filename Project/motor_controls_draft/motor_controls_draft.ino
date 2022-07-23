@@ -39,16 +39,16 @@ void setup() //rename later as "initialState" to avoid the other setup function
 }
 
 char uart_receive;
-//int gear = 0;
+int gear = 0;
 
 //Setting gear levels for robot to move at different speeds at different gears.
 //The user can press numbered keys to either move up or down the gears, thus increasing or decreasing the speed.
-//int gear0 = LOW;
-//int gear1 = 50;
-//int gear2 = 100;
-//int gear3 = 150;
-//int gear4 = 200;
-//int gear5 = HIGH;
+int gear0 = LOW;
+int gear1 = 50;
+int gear2 = 100;
+int gear3 = 150;
+int gear4 = 200;
+int gear5 = HIGH;
 
 
 // This function lets you control spinning direction of motors (and speed)
