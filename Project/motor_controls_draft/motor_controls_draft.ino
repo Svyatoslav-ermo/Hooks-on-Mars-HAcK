@@ -9,7 +9,7 @@ int in4a = 2;
 
 int in1b = 8;
 int in2b = 11;
-int enC = 9
+int enC = 9;
 
 int in3b = 12;
 int in4b = 13;
@@ -26,16 +26,25 @@ void setup() //rename later as "initialState" to avoid the other setup function
   // Set all the motor control pins to outputs
   pinMode(enA, OUTPUT);
   pinMode(enB, OUTPUT);
-  pinMode(in1, OUTPUT);
-  pinMode(in2, OUTPUT);
-  pinMode(in3, OUTPUT);
-  pinMode(in4, OUTPUT);
+  pinMode(in1a, OUTPUT);
+  pinMode(in2a, OUTPUT);
+  pinMode(in3a, OUTPUT);
+  pinMode(in4a, OUTPUT);
+  pinMode(in1b, OUTPUT);
+  pinMode(in2b, OUTPUT);
+  pinMode(in3b, OUTPUT);
+  pinMode(in4b, OUTPUT);
+  
   
   // Turn off motors (Gear 0)
-  digitalWrite(in1, LOW);
-  digitalWrite(in2, LOW);
-  digitalWrite(in3, LOW);
-  digitalWrite(in4, LOW);
+  digitalWrite(in1a, LOW);
+  digitalWrite(in2a, LOW);
+  digitalWrite(in3a, LOW);
+  digitalWrite(in4a, LOW);
+  digitalWrite(in1b, LOW);
+  digitalWrite(in2b, LOW);
+  digitalWrite(in3b, LOW);
+  digitalWrite(in4b, LOW);
 }
 
 char uart_receive;
@@ -125,12 +134,16 @@ void directionControl()
     gear = gear1;
     analogWrite(enA, gear);
     analogWrite(enB, gear);
+    analogWrite(enC, gear);
+    analogWrite(enD, gear);
 
     if (uart_receive == '1')
     {
       gear = gear1;
       analogWrite(enA, gear);
       analogWrite(enB, gear);
+      analogWrite(enC, gear);
+      analogWrite(enD, gear);
       uart_receive = '\0';
       delay(20);
     }
@@ -139,6 +152,8 @@ void directionControl()
       gear = gear2;
       analogWrite(enA, gear);
       analogWrite(enB, gear);
+      analogWrite(enC, gear);
+      analogWrite(enD, gear);
       uart_receive = '\0';
       delay(20);
     }
@@ -147,6 +162,8 @@ void directionControl()
       gear = gear3;
       analogWrite(enA, gear);
       analogWrite(enB, gear);
+      analogWrite(enC, gear);
+      analogWrite(enD, gear);
       uart_receive = '\0';
       delay(20);
     }
@@ -155,6 +172,8 @@ void directionControl()
       gear = gear4;
       analogWrite(enA, gear);
       analogWrite(enB, gear);
+      analogWrite(enC, gear);
+      analogWrite(enD, gear);
       uart_receive = '\0';
       delay(20);
     }
@@ -163,6 +182,8 @@ void directionControl()
       gear = gear5;
       analogWrite(enA, gear);
       analogWrite(enB, gear);
+      analogWrite(enC, gear);
+      analogWrite(enD, gear);
       uart_receive = '\0';
       delay(20);
     }
@@ -171,6 +192,8 @@ void directionControl()
       gear = gear0;
       analogWrite(enA, gear);
       analogWrite(enB, gear);
+      analogWrite(enC, gear);
+      analogWrite(enD, gear);
       uart_receive = '\0';
       delay(20);
     }
@@ -214,6 +237,6 @@ void loop() //calls two defined functions at an interval of one second
   digitalWrite(in2, LOW);
   digitalWrite(in3, LOW);
   digitalWrite(in4, LOW);
-
 */
+ 
   
