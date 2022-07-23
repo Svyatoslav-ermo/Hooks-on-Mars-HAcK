@@ -7,6 +7,14 @@ int enB = 3;
 int in3 = 4;
 int in4 = 2;
 
+int in1b = 8;
+int in2b = 11;
+int enC = 9
+
+int in3b = 12;
+int in4b = 13;
+int enD = 10;
+
 
 void setup() //rename later as "initialState" to avoid the other setup function
 {
