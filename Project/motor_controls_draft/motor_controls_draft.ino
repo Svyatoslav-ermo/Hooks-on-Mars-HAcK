@@ -31,71 +31,73 @@ void setup() //rename later as "initialState" to avoid the other setup function
 }
 
 char uart_receive;
-int gear;
+//int gear = 0;
 
 //Setting gear levels for robot to move at different speeds at different gears.
 //The user can press numbered keys to either move up or down the gears, thus increasing or decreasing the speed.
-int gear0 = LOW;
-int gear1 = 50;
-int gear2 = 100;
-int gear3 = 150;
-int gear4 = 200;
-int gear5 = HIGH;
+//int gear0 = LOW;
+//int gear1 = 50;
+//int gear2 = 100;
+//int gear3 = 150;
+//int gear4 = 200;
+//int gear5 = HIGH;
 
-void speedControl() 
-{
-   // For PWM the range is from 0 to 255
-  gear = gear1;
-  analogWrite(enA, gear);
-  analogWrite(enB, gear);
-
-  if (uart_receive == '1')
-  {
-    gear = gear1;
-    analogWrite(enA, gear);
-    analogWrite(enB, gear);
-    uart_receive = '\0';
-  }
-  else if (uart_receive == '2')
-  {
-    gear = gear2;
-    analogWrite(enA, gear);
-    analogWrite(enB, gear);
-    uart_receive = '\0';
-  }
-  else if (uart_receive == '3')
-  {
-    gear = gear3;
-    analogWrite(enA, gear);
-    analogWrite(enB, gear);
-    uart_receive = '\0';
-  }
-  else if (uart_receive == '4')
-  {
-    gear = gear4;
-    analogWrite(enA, gear);
-    analogWrite(enB, gear);
-    uart_receive = '\0';
-  }
-  else if (uart_receive == '5')
-  {
-    gear = gear5;
-    analogWrite(enA, gear);
-    analogWrite(enB, gear);
-    uart_receive = '\0';
-  }
-  else if (uart_receive == '0') //No PWM so no speed
-  {
-    gear = gear0;
-    analogWrite(enA, gear);
-    analogWrite(enB, gear);
-    uart_receive = '\0';
-  }
-  else
-    {
-      ;
-    }
-}
+//void speedControl() 
+//{
+//   // For PWM the range is from 0 to 255
+//  //gear = gear1;
+//  analogWrite(enA, gear);
+//  analogWrite(enB, gear);
+//
+//  if (uart_receive == '1')
+//  {
+//    gear = gear1;
+//    analogWrite(enA, gear);
+//    analogWrite(enB, gear);
+//    uart_receive = '\0';
+//    delay(20);
+//  }
+//  else if (uart_receive == '2')
+//  {
+//    gear = gear2;
+//    analogWrite(enA, gear);
+//    analogWrite(enB, gear);
+//    uart_receive = '\0';
+//    delay(20);
+//  }
+//  else if (uart_receive == '3')
+//  {
+//    gear = gear3;
+//    analogWrite(enA, gear);
+//    analogWrite(enB, gear);
+//    uart_receive = '\0';
+//    delay(20);
+//  }
+//  else if (uart_receive == '4')
+//  {
+//    gear = gear4;
+//    analogWrite(enA, gear);
+//    analogWrite(enB, gear);
+//    uart_receive = '\0';
+//    delay(20);
+//  }
+//  else if (uart_receive == '5')
+//  {
+//    gear = gear5;
+//    analogWrite(enA, gear);
+//    analogWrite(enB, gear);
+//    uart_receive = '\0';
+//    delay(20);
+//  }
+//  else if (uart_receive == '0') //No PWM so no speed
+//  {
+//    gear = gear0;
+//    analogWrite(enA, gear);
+//    analogWrite(enB, gear);
+//    uart_receive = '\0';
+//    delay(20);
+//  }
+//}
 
 // This function lets you control spinning direction of motors
 void directionControl() 
@@ -159,12 +161,13 @@ void loop() //calls two defined functions at an interval of one second
     Serial.print(uart_receive);
     
   }
-   
-  //delay(10);
+  
   directionControl();
-  //delay(1000);
-  speedControl();
-  //delay(1000);
+  delay(20);
+  
+  
+  //speedControl();
+  //delay(20);
 }
 
 
