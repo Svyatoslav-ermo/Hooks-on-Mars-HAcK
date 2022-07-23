@@ -1,11 +1,11 @@
 // Motor A connections
 int enA = 6;
-int in1 = 7;
-int in2 = 5;
+int in1a = 7;
+int in2a = 5;
 // Motor B connections
 int enB = 3;
-int in3 = 4;
-int in4 = 2;
+int in3a = 4;
+int in4a = 2;
 
 int in1b = 8;
 int in2b = 11;
@@ -118,46 +118,62 @@ void directionControl()
   
   if (uart_receive == 'w')
   {
-    digitalWrite(in1, HIGH);
-    digitalWrite(in2, LOW);
-    digitalWrite(in3, HIGH);
-    digitalWrite(in4, LOW);
+    digitalWrite(in1a, HIGH);
+    digitalWrite(in2a, LOW);
+    digitalWrite(in3a, HIGH);
+    digitalWrite(in4a, LOW);
+    
+    digitalWrite(in1b, HIGH);
+    digitalWrite(in2b, LOW);
+    digitalWrite(in3b, HIGH);
+    digitalWrite(in4b, LOW);
     uart_receive = '\0';
     //delay(2000);
   }
   else if (uart_receive == 's')
   {
-    digitalWrite(in1, LOW);
-    digitalWrite(in2, HIGH);
-    digitalWrite(in3, LOW);
-    digitalWrite(in4, HIGH);
+    digitalWrite(in1a, LOW);
+    digitalWrite(in2a, HIGH);
+    digitalWrite(in3a, LOW);
+    digitalWrite(in4a, HIGH);
+    
+    digitalWrite(in1b, LOW);
+    digitalWrite(in2b, HIGH);
+    digitalWrite(in3b, LOW);
+    digitalWrite(in4b, HIGH);
     uart_receive = '\0';
     //delay(2000);
   }
   else if (uart_receive == 'a')
   {
-    digitalWrite(in1, LOW);
-    digitalWrite(in2, LOW);
-    digitalWrite(in3, HIGH);
-    digitalWrite(in4, LOW);
+    digitalWrite(in1a, HIGH);
+    digitalWrite(in2a, LOW);
+    digitalWrite(in3b, LOW);
+    digitalWrite(in4b, LOW);
+   
     uart_receive = '\0';
     //delay(2000);
   }
   else if (uart_receive == 'd')
   {
-    digitalWrite(in1, HIGH);
-    digitalWrite(in2, LOW);
-    digitalWrite(in3, LOW);
-    digitalWrite(in4, LOW);
+    digitalWrite(in1a, LOW);
+    digitalWrite(in2a, LOW);
+    digitalWrite(in3b, HIGH);
+    digitalWrite(in4b, LOW);
     uart_receive = '\0';
     //delay(2000);
   }
   else if (uart_receive == '\0')
   {
-    digitalWrite(in1, LOW);
-    digitalWrite(in2, LOW);
-    digitalWrite(in3, LOW);
-    digitalWrite(in4, LOW);
+    digitalWrite(in1a, LOW);
+    digitalWrite(in2a, LOW);
+    digitalWrite(in3b, LOW);
+    digitalWrite(in4b,LOW);
+    
+    digitalWrite(in1b, LOW);
+    digitalWrite(in2b, LOW);
+    digitalWrite(in3b, LOW);
+    digitalWrite(in4b, LOW);
   }
 }
 
