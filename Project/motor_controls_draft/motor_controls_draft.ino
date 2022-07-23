@@ -97,22 +97,6 @@ void speedControl()
     }
 }
 
-void loop() //calls two defined functions at an interval of one second
-{
-  if (Serial.available())
-  {
-    uart_receive = char(Serial.read());
-    Serial.print(uart_receive);
-    
-  }
-   
-  //delay(10);
-  directionControl();
-  //delay(1000);
-  speedControl();
-  //delay(1000);
-}
-
 // This function lets you control spinning direction of motors
 void directionControl() 
 {
@@ -166,6 +150,24 @@ void directionControl()
     digitalWrite(in4, LOW);
   }
 }
+
+void loop() //calls two defined functions at an interval of one second
+{
+  if (Serial.available())
+  {
+    uart_receive = char(Serial.read());
+    Serial.print(uart_receive);
+    
+  }
+   
+  //delay(10);
+  directionControl();
+  //delay(1000);
+  speedControl();
+  //delay(1000);
+}
+
+
   /*
   // Turn on motor A & B
   digitalWrite(in1, HIGH);

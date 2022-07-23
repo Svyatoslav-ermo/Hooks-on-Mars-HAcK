@@ -50,7 +50,25 @@ void draw()
   } else if (state == 6) {
     myPort.write('j');
     state = 0;
-  } 
+  } else if (state == 7) {
+    myPort.write('1');
+    state = 0;
+  } else if (state == 8) {
+    myPort.write('2');
+    state = 0;
+  } else if (state == 9) {
+    myPort.write('3');
+    state = 0;
+  } else if (state == 10) {
+    myPort.write('4');
+    state = 0;
+  } else if (state == 11) {
+    myPort.write('5');
+    state = 0;
+  } else if (state == 12) {
+    myPort.write('0');
+    state = 0;
+  }
   
   delay(20);
 
@@ -69,4 +87,16 @@ void keyPressed() {               //called whenever a key is pressed, key is aut
     state = 5;
   else if (key == 'j')
     state = 6;
+  else if (key == '1')
+    state = 7;
+  else if (key == '2')
+    state = 8;
+  else if (key == '3')
+    state = 9;
+  else if (key == '4')
+    state = 10;
+  else if (key == '5')
+    state = 11;
+  else if (key == '0')
+    state = 12;
 }
