@@ -49,13 +49,13 @@ void loop() {
     readIn = '\0';
   }
 
-    if (readIn == 'u') {
-    Serial1.print('u');
+    if (readIn == 'o') {
+    Serial1.print('o');
     readIn = '\0';
   }
 
-    if (readIn == 'j') {
-    Serial1.print('j');
+    if (readIn == 'p') {
+    Serial1.print('p');
     readIn = '\0';
   }
 
