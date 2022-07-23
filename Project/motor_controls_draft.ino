@@ -46,16 +46,47 @@ void directionControl()
 {
   // Set motors to resting state
   // For PWM maximum possible values are 0 to 255
-  // We will use 2 keys to switch the gears for the robot so it moves at different speeds at different gears.
   
-  analogWrite(enA, gear0);
-  analogWrite(enB, gear0);
   
-  if (uart_receive == 'a')
+  analogWrite(enA, gear1);
+  analogWrite(enB, gear1);
+  
+  //these If statements control the direction of the robot by controlling the direction
+  //of the motors (clockwise or counterclockwise) when you press the w,a,s,d keys. 
+  
+  if (uart_receive == 'w')
   {
-    digitalWrite(
+    digitalWrite(in1, HIGH);
+    digitalWrite(in2, LOW);
+    digitalWrite(in3, HIGH);
+    digitalWrite(in4, LOW);
+    delay(2000);
   }
-
+  else if (uart_receive == 's')
+  {
+    digitalWrite(in1, LOW);
+    digitalWrite(in2, HIGH);
+    digitalWrite(in3, LOW);
+    digitalWrite(in4, HIGH);
+    delay(2000);
+  }
+  else if (uart_receive == 'a')
+  {
+    digitalWrite(in1, HIGH);
+    digitalWrite(in2, LOW);
+    digitalWrite(in3, LOW);
+    digitalWrite(in4, LOW);
+    delay(2000);
+  }
+  else if uart_receive == 'd')
+  {
+    digitalWrite(in1, LOW);
+    digitalWrite(in2, LOW);
+    digitalWrite(in3, HIGH);
+    digitalWrite(in4, LOW);
+    delay(2000);
+  }
+  /*
   // Turn on motor A & B
   digitalWrite(in1, HIGH);
   digitalWrite(in2, LOW);
@@ -76,11 +107,13 @@ void directionControl()
   digitalWrite(in3, LOW);
   digitalWrite(in4, LOW);
 }
-
-// This function lets you control speed of the motors
+*/
+  
+  
+//This function lets you control speed of the motors
 void speedControl() 
 {
-   
+   // We will use 2 keys to switch the gears for the robot so it moves at different speeds at different gears.
   
   // Turn on motors
   digitalWrite(in1, LOW);
