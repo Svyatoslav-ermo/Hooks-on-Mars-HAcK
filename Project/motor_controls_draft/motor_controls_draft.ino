@@ -7,23 +7,14 @@ int enB = 3;
 int in3 = 4;
 int in4 = 2;
 
-//Setting gear levels for robot to move at different speeds at different gears.
-//The user can press 2 keys to either move up or down the gears, thus increasing or decreasing the speed.
-int gear0 = LOW; //resting state of the robot
-int gear1 = 50;
-int gear2 = 100;
-int gear3 = 150;
-int gear4 = 200;
-int gear5 = HIGH;
 
 void setup() //rename later as "initialState" to avoid the other setup function
 {
-
   Serial.begin(9600);
-  while(!Serial) {
+  while(!Serial) 
+  {
     ;
   }
-
   // Set all the motor control pins to outputs
   pinMode(enA, OUTPUT);
   pinMode(enB, OUTPUT);
@@ -40,60 +31,85 @@ void setup() //rename later as "initialState" to avoid the other setup function
 }
 
 char uart_receive;
+int gear;
 
-//This function lets you control speed of the motors
+//Setting gear levels for robot to move at different speeds at different gears.
+//The user can press numbered keys to either move up or down the gears, thus increasing or decreasing the speed.
+int gear0 = LOW;
+int gear1 = 50;
+int gear2 = 100;
+int gear3 = 150;
+int gear4 = 200;
+int gear5 = HIGH;
+
 void speedControl() 
 {
-   // We will use 2 keys to switch the gears for the robot so it moves at different speeds at different gears.
-  
-  // Turn on motors
-  digitalWrite(in1, LOW);
-  digitalWrite(in2, HIGH);
-  digitalWrite(in3, LOW);
-  digitalWrite(in4, HIGH);
-  
-  /* Accelerate from zero to maximum speed
-  for (int i = 0; i < 256; i++) 
-  {
-    analogWrite(enA, i);
-    analogWrite(enB, i);
-    delay(20);
-  }
-  */
+   // For PWM the range is from 0 to 255
+  gear = gear1;
+  analogWrite(enA, gear);
+  analogWrite(enB, gear);
 
-  
-  if (true)
+  if (uart_receive == '1')
   {
-    ;
+    gear = gear1;
+    analogWrite(enA, gear);
+    analogWrite(enB, gear);
+    uart_receive = '\0';
   }
-  
-  
-  // Decelerate from maximum speed to zero
-  for (int i = 255; i >= 0; --i) 
+  else if (uart_receive == '2')
   {
-    analogWrite(enA, i);
-    analogWrite(enB, i);
-    delay(20);
+    gear = gear2;
+    analogWrite(enA, gear);
+    analogWrite(enB, gear);
+    uart_receive = '\0';
   }
-  
-  // Now turn off motors
-  digitalWrite(in1, LOW);
-  digitalWrite(in2, LOW);
-  digitalWrite(in3, LOW);
-  digitalWrite(in4, LOW);
+  else if (uart_receive == '3')
+  {
+    gear = gear3;
+    analogWrite(enA, gear);
+    analogWrite(enB, gear);
+    uart_receive = '\0';
+  }
+  else if (uart_receive == '4')
+  {
+    gear = gear4;
+    analogWrite(enA, gear);
+    analogWrite(enB, gear);
+    uart_receive = '\0';
+  }
+  else if (uart_receive == '5')
+  {
+    gear = gear5;
+    analogWrite(enA, gear);
+    analogWrite(enB, gear);
+    uart_receive = '\0';
+  }
+  else if (uart_receive == '0') //No PWM so no speed
+  {
+    gear = gear0;
+    analogWrite(enA, gear);
+    analogWrite(enB, gear);
+    uart_receive = '\0';
+  }
+  else
+    {
+      ;
+    }
 }
 
 void loop() //calls two defined functions at an interval of one second
 {
-  if (Serial.available()){
+  if (Serial.available())
+  {
     uart_receive = char(Serial.read());
     Serial.print(uart_receive);
     
   }
+   
   //delay(10);
   directionControl();
   //delay(1000);
-  //speedControl();
+  speedControl();
   //delay(1000);
 }
 
@@ -101,11 +117,7 @@ void loop() //calls two defined functions at an interval of one second
 void directionControl() 
 {
   // Set motors to resting state
-  // For PWM maximum possible values are 0 to 255
-  
-  
-  analogWrite(enA, gear1);
-  analogWrite(enB, gear1);
+ 
   
   //these If statements control the direction of the robot by controlling the direction
   //of the motors (clockwise or counterclockwise) when you press the w,a,s,d keys. 
@@ -176,5 +188,4 @@ void directionControl()
   digitalWrite(in4, LOW);
 }
 */
-  
   
