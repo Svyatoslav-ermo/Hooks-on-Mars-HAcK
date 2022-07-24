@@ -28,6 +28,8 @@ void loop() {
   if (SerialBT.available()) //if there are bytes available in the buffer
     readIn = char(SerialBT.read()); //read in one and store it in readIn
 
+  //Several "If" statements are for reading characters from computer and printing on serial monitor. 
+  
   if (readIn == 'w') {
     Serial1.print('w');
     readIn = '\0';
