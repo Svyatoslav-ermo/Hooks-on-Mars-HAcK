@@ -68,6 +68,11 @@ void loop()
       Serial1.print('x');
       readIn = '\0';
   }
+  if (readIn == 'm')
+  {
+      Serial1.print('m');
+      readIn = '\0';
+  }
   Serial.println(readIn);
     if (readIn == 'o' && servoAngle < 180) 
     { // if input is o and servo angle is less than 180 degrees
