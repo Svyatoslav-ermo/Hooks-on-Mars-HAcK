@@ -209,28 +209,3 @@ void loop() //calls two defined functions at an interval of one second
   //speedControl();
   //delay(20);
 }
-
-
-  /*
-  // Turn on motor A & B
-  digitalWrite(in1, HIGH);
-  digitalWrite(in2, LOW);
-  digitalWrite(in3, HIGH);
-  digitalWrite(in4, LOW);
-  delay(2000);
-  
-  // Now change motor directions
-  digitalWrite(in1, LOW);
-  digitalWrite(in2, HIGH);
-  digitalWrite(in3, LOW);
-  digitalWrite(in4, HIGH);
-  delay(2000);
-  
-  // Turn off motors
-  digitalWrite(in1, LOW);
-  digitalWrite(in2, LOW);
-  digitalWrite(in3, LOW);
-  digitalWrite(in4, LOW);
-*/
- 
-  
