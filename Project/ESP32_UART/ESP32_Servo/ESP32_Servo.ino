@@ -1,5 +1,4 @@
-
-#include <Servo.h>
+#include <ESP32Servo.h>
 #include "BluetoothSerial.h"
 
 #if !defined(CONFIG_BT_ENABLED) || !defined(CONFIG_BLUEDROID_ENABLED)           //error catching
