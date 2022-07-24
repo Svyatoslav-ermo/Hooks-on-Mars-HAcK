@@ -85,8 +85,8 @@ void moveForward()
 
   digitalWrite(in1b, HIGH);
   digitalWrite(in2b, LOW);
-  digitalWrite(in3b, HIGH);
-  digitalWrite(in4b, LOW);
+  digitalWrite(in3b, LOW);
+  digitalWrite(in4b, HIGH);
   uart_receive = '\0';
 }
 
