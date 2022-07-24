@@ -57,24 +57,17 @@ void draw()
     myPort.write('l');
     state = 0;
   } else if (state == 9) {
-    myPort.write('b');
-    state = 0;
-  } else if (state == 10) {
-    myPort.write('n');
-    state = 0;
-  } else if (state == 11) {
     myPort.write('m');
     state = 0;
-  } else if (state == 12) {
-    myPort.write('k');
-    state = 0;
-  }
+  } 
   
   delay(20);
 
 }
 
-void keyPressed() {               //called whenever a key is pressed, key is automatically set to the key that is pressed
+void keyPressed() 
+{               
+  //called whenever a key is pressed, key is automatically set to the key that is pressed
   if(key == 'w')
     state = 1;
   else if (key == 's')
@@ -91,12 +84,7 @@ void keyPressed() {               //called whenever a key is pressed, key is aut
     state = 7;
   else if (key == 'l')
     state = 8;
-  else if (key == 'b')
-    state = 9;
-  else if (key == 'n')
-    state = 10;
   else if (key == 'm')
-    state = 11;
-  else if (key == 'k')
-    state = 12;
+    state = 9;
+  
 }
