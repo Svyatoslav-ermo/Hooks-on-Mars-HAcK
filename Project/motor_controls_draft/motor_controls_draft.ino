@@ -1,16 +1,18 @@
-// Motor A connections
+// Motor A (back left wheel) connections
 int enA = 3;
 int in1a = 2;
 int in2a = 4;
-// Motor B connections
+// Motor B (front left wheel) connections
 int enB = 6;
 int in3a = 5;
 int in4a = 7;
 
+//Motor C (front right wheel) connections
 int in1b = 8;
 int in2b = 11;
 int enC = 9;
 
+//motor D (back right wheel) communications
 int in3b = 12;
 int in4b = 13;
 int enD = 10;
@@ -86,8 +88,8 @@ void moveForward()
   digitalWrite(in3b, HIGH);
   digitalWrite(in4b, LOW);
   uart_receive = '\0';
-  
 }
+
 void moveBackward()
 {
   digitalWrite(in1a, LOW);
@@ -95,12 +97,11 @@ void moveBackward()
   digitalWrite(in3a, LOW);
   digitalWrite(in4a, HIGH);
 
-  digitalWrite(in1b, LOW);
-  digitalWrite(in2b, HIGH);
+  digitalWrite(in1b, HIGH);
+  digitalWrite(in2b, LOW);
   digitalWrite(in3b, LOW);
   digitalWrite(in4b, HIGH);
   uart_receive = '\0';
-  
 }
 
 void turnLeft()
@@ -110,19 +111,18 @@ void turnLeft()
   digitalWrite(in3a, HIGH);
   digitalWrite(in4a, LOW);
 
-  digitalWrite(in1b, LOW);
+  digitalWrite(in1b, HIGH);
   digitalWrite(in2b, LOW);
-  digitalWrite(in3b, HIGH);
+  digitalWrite(in3b, LOW);
   digitalWrite(in4b, LOW);
-  
   uart_receive = '\0';
-  
 }
+
 void turnRight()
 {
-  digitalWrite(in1a, HIGH);
+  digitalWrite(in1a, LOW);
   digitalWrite(in2a, LOW);
-  digitalWrite(in3a, LOW);
+  digitalWrite(in3a, HIGH);
   digitalWrite(in4a, LOW);
 
   digitalWrite(in1b, HIGH);
@@ -130,7 +130,6 @@ void turnRight()
   digitalWrite(in3b, HIGH);
   digitalWrite(in4b, LOW);
   uart_receive = '\0';
-  
 }
 
 void reverseLeft()
@@ -145,7 +144,6 @@ void reverseLeft()
   digitalWrite(in3b, LOW);
   digitalWrite(in4b, HIGH);
   uart_receive = '\0';
-  
 }
 
 void reverseRight()
@@ -160,7 +158,6 @@ void reverseRight()
   digitalWrite(in3b, LOW);
   digitalWrite(in4b, HIGH);
   uart_receive = '\0';
-  
 }
 
 void Pause()
@@ -174,7 +171,6 @@ void Pause()
   digitalWrite(in2b, LOW);
   digitalWrite(in3b, LOW);
   digitalWrite(in4b, LOW);
-  
 }
 
 // This function lets you control spinning direction of motors (and speed)
