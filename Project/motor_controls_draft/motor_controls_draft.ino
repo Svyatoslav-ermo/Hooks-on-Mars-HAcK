@@ -137,12 +137,12 @@ void reverseLeft()
   digitalWrite(in1a, LOW);
   digitalWrite(in2a, HIGH);
   digitalWrite(in3a, LOW);
-  digitalWrite(in4a, HIGH);
+  digitalWrite(in4a, LOW);
 
   digitalWrite(in1b, LOW);
   digitalWrite(in2b, HIGH);
-  digitalWrite(in3b, LOW);
-  digitalWrite(in4b, HIGH);
+  digitalWrite(in3b, HIGH);
+  digitalWrite(in4b, LOW);
   uart_receive = '\0';
 }
 
@@ -155,8 +155,8 @@ void reverseRight()
 
   digitalWrite(in1b, LOW);
   digitalWrite(in2b, LOW);
-  digitalWrite(in3b, LOW);
-  digitalWrite(in4b, HIGH);
+  digitalWrite(in3b, HIGH);
+  digitalWrite(in4b, LOW);
   uart_receive = '\0';
 }
 
