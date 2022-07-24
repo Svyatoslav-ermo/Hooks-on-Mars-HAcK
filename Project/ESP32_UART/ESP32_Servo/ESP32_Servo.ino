@@ -23,34 +23,50 @@ int servoInc = 5; // Increments to change servo angle
 int servoAngle = 10; // Set Servo angle
 char readIn; // Define Bluetooth char variable
 
-void loop() {
-  
+void loop() 
+{
   if (SerialBT.available()) //if there are bytes available in the buffer
     readIn = char(SerialBT.read()); //read in one and store it in readIn
 
   //Several "If" statements are for reading characters from computer and printing on serial monitor. 
   
-  if (readIn == 'w') {
+  if (readIn == 'w') 
+  {
     Serial1.print('w');
     readIn = '\0';
   }
 
-    if (readIn == 's') {
+  if (readIn == 's') 
+  {
     Serial1.print('s');
     readIn = '\0';
   }
 
-  if (readIn == 'a') {
+  if (readIn == 'a') 
+  {
     Serial1.print('a');
     readIn = '\0';
   }
 
-    if (readIn == 'd') {
+  if (readIn == 'd') 
+  {
       Serial1.print('d');
       readIn = '\0';
   }
+  
+  if (readIn == 'z') 
+  {
+      Serial1.print('z');
+      readIn = '\0';
+  }
+  if (readIn == 'x') 
+  {
+      Serial1.print('x');
+      readIn = '\0';
+  }
 
-    if (readIn == 'o' && servoAngle < 180) { // if input is o and servo angle is less than 180 degrees
+    if (readIn == 'o' && servoAngle < 180) 
+    { // if input is o and servo angle is less than 180 degrees
       servoAngle += servoInc; // Increment angle
       myservo.write(servoAngle); // Write new angle to servo
       readIn = '\0';
