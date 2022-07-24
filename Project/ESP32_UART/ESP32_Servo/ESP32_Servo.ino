@@ -5,6 +5,8 @@
 #error Bluetooth is not enabled! Please run `make menuconfig` to and enable it
 #endif
 
+Servo myservo; // Create Servo object
+int servoPin = 13; // Define Servo pin
 BluetoothSerial SerialBT; //declares the Bluetooth object
 
 void setup() {
@@ -17,8 +19,8 @@ void setup() {
 
 }
 
-Servo myservo; // Create Servo object
-int servoPin = 13; // Define Servo pin
+
+
 int servoInc = 5; // Increments to change servo angle
 int servoAngle = 10; // Set Servo angle
 char readIn; // Define Bluetooth char variable
