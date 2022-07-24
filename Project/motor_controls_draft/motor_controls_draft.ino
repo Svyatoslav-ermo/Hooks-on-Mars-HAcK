@@ -26,6 +26,8 @@ void setup() //rename later as "initialState" to avoid the other setup function
   // Set all the motor control pins to outputs
   pinMode(enA, OUTPUT);
   pinMode(enB, OUTPUT);
+  pinMode(enC, OUTPUT);
+  pinMode(enD, OUTPUT);
   pinMode(in1a, OUTPUT);
   pinMode(in2a, OUTPUT);
   pinMode(in3a, OUTPUT);
@@ -60,73 +62,144 @@ int gear4 = 200;
 int gear5 = HIGH;
 
 
+void moveForward()
+{
+  digitalWrite(in1a, HIGH);
+  digitalWrite(in2a, LOW);
+  digitalWrite(in3a, HIGH);
+  digitalWrite(in4a, LOW);
+
+  digitalWrite(in1b, HIGH);
+  digitalWrite(in2b, LOW);
+  digitalWrite(in3b, HIGH);
+  digitalWrite(in4b, LOW);
+  uart_receive = '\0';
+  delay(20);
+}
+void moveBackward()
+{
+  digitalWrite(in1a, LOW);
+  digitalWrite(in2a, HIGH);
+  digitalWrite(in3a, LOW);
+  digitalWrite(in4a, HIGH);
+
+  digitalWrite(in1b, LOW);
+  digitalWrite(in2b, HIGH);
+  digitalWrite(in3b, LOW);
+  digitalWrite(in4b, HIGH);
+  uart_receive = '\0';
+  delay(20);
+}
+
+void turnLeft()
+{
+  digitalWrite(in1a, HIGH);
+  digitalWrite(in2a, LOW);
+  digitalWrite(in3a, HIGH);
+  digitalWrite(in4a, LOW);
+
+  digitalWrite(in1b, LOW);
+  digitalWrite(in2b, LOW);
+  digitalWrite(in3b, HIGH);
+  digitalWrite(in4b, LOW);
+  
+  uart_receive = '\0';
+  delay(20);
+}
+void turnRight()
+{
+  digitalWrite(in1a, HIGH);
+  digitalWrite(in2a, LOW);
+  digitalWrite(in3a, LOW);
+  digitalWrite(in4a, LOW);
+
+  digitalWrite(in1b, HIGH);
+  digitalWrite(in2b, LOW);
+  digitalWrite(in3b, HIGH);
+  digitalWrite(in4b, LOW);
+  uart_receive = '\0';
+  delay(20);
+}
+
+void reverseLeft()
+{
+  digitalWrite(in1a, LOW);
+  digitalWrite(in2a, HIGH);
+  digitalWrite(in3a, LOW);
+  digitalWrite(in4a, LOW);
+
+  digitalWrite(in1b, LOW);
+  digitalWrite(in2b, HIGH);
+  digitalWrite(in3b, LOW);
+  digitalWrite(in4b, HIGH);
+  uart_receive = '\0';
+  delay(20);
+}
+
+void reverseRight()
+{
+  digitalWrite(in1a, LOW);
+  digitalWrite(in2a, HIGH);
+  digitalWrite(in3a, LOW);
+  digitalWrite(in4a, HIGH);
+
+  digitalWrite(in1b, LOW);
+  digitalWrite(in2b, LOW);
+  digitalWrite(in3b, LOW);
+  digitalWrite(in4b, HIGH);
+  uart_receive = '\0';
+  delay(20);
+}
+
+void Pause()
+{
+  digitalWrite(in1a, LOW);
+  digitalWrite(in2a, LOW);
+  digitalWrite(in3a, LOW);
+  digitalWrite(in4a, LOW);
+    
+  digitalWrite(in1b, LOW);
+  digitalWrite(in2b, LOW);
+  digitalWrite(in3b, LOW);
+  digitalWrite(in4b, LOW);
+  delay(20);
+}
+
 // This function lets you control spinning direction of motors (and speed)
 void directionControl() 
 {
-  // Set motors to resting state
- 
+  Pause();
   
   //these If statements control the direction of the robot by controlling the direction
   //of the motors (clockwise or counterclockwise) when you press the w,a,s,d keys. 
   
   if (uart_receive == 'w')
   {
-    digitalWrite(in1a, HIGH);
-    digitalWrite(in2a, LOW);
-    digitalWrite(in3a, HIGH);
-    digitalWrite(in4a, LOW);
-    
-    digitalWrite(in1b, HIGH);
-    digitalWrite(in2b, LOW);
-    digitalWrite(in3b, HIGH);
-    digitalWrite(in4b, LOW);
-    uart_receive = '\0';
-    //delay(2000);
+    moveForward();
   }
   else if (uart_receive == 's')
   {
-    digitalWrite(in1a, LOW);
-    digitalWrite(in2a, HIGH);
-    digitalWrite(in3a, LOW);
-    digitalWrite(in4a, HIGH);
-    
-    digitalWrite(in1b, LOW);
-    digitalWrite(in2b, HIGH);
-    digitalWrite(in3b, LOW);
-    digitalWrite(in4b, HIGH);
-    uart_receive = '\0';
-    //delay(2000);
+    moveBackward();
   }
   else if (uart_receive == 'a')
   {
-    digitalWrite(in1a, HIGH);
-    digitalWrite(in2a, LOW);
-    digitalWrite(in3b, LOW);
-    digitalWrite(in4b, LOW);
-   
-    uart_receive = '\0';
-    //delay(2000);
+    turnLeft();
   }
   else if (uart_receive == 'd')
   {
-    digitalWrite(in1a, LOW);
-    digitalWrite(in2a, LOW);
-    digitalWrite(in3b, HIGH);
-    digitalWrite(in4b, LOW);
-    uart_receive = '\0';
-    //delay(2000);
+    turnRight();
+  }
+  else if (uart_receive == 'z')
+  {
+    reverseLeft();
+  }
+  else if (uart_receive == 'x')
+  {
+    reverseRight();
   }
   else if (uart_receive == '\0')
   {
-    digitalWrite(in1a, LOW);
-    digitalWrite(in2a, LOW);
-    digitalWrite(in3a, LOW);
-    digitalWrite(in4a, LOW);
-    
-    digitalWrite(in1b, LOW);
-    digitalWrite(in2b, LOW);
-    digitalWrite(in3b, LOW);
-    digitalWrite(in4b, LOW);
+    Pause();
   }
   
 //  {
@@ -204,7 +277,6 @@ void loop() //calls two defined functions at an interval of one second
   }
   delay(20);
   directionControl();
-  
   
   //speedControl();
   //delay(20);
