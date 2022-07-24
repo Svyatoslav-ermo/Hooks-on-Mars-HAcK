@@ -47,6 +47,18 @@ void setup() //rename later as "initialState" to avoid the other setup function
   digitalWrite(in2b, LOW);
   digitalWrite(in3b, LOW);
   digitalWrite(in4b, LOW);
+
+  // Set speed PWM for all motors
+//  analogWrite(enA, 255);
+//  analogWrite(enB, 255);
+//  analogWrite(enC, 255);
+//  analogWrite(enD, 255);
+
+  // Set speed PWM for all motors to 100
+  analogWrite(enA, 100);
+  analogWrite(enB, 100);
+  analogWrite(enC, 100);
+  analogWrite(enD, 100);
 }
 
 char uart_receive;
@@ -74,7 +86,7 @@ void moveForward()
   digitalWrite(in3b, HIGH);
   digitalWrite(in4b, LOW);
   uart_receive = '\0';
-  delay(20);
+  
 }
 void moveBackward()
 {
@@ -88,7 +100,7 @@ void moveBackward()
   digitalWrite(in3b, LOW);
   digitalWrite(in4b, HIGH);
   uart_receive = '\0';
-  delay(20);
+  
 }
 
 void turnLeft()
@@ -104,7 +116,7 @@ void turnLeft()
   digitalWrite(in4b, LOW);
   
   uart_receive = '\0';
-  delay(20);
+  
 }
 void turnRight()
 {
@@ -118,7 +130,7 @@ void turnRight()
   digitalWrite(in3b, HIGH);
   digitalWrite(in4b, LOW);
   uart_receive = '\0';
-  delay(20);
+  
 }
 
 void reverseLeft()
@@ -133,7 +145,7 @@ void reverseLeft()
   digitalWrite(in3b, LOW);
   digitalWrite(in4b, HIGH);
   uart_receive = '\0';
-  delay(20);
+  
 }
 
 void reverseRight()
@@ -148,7 +160,7 @@ void reverseRight()
   digitalWrite(in3b, LOW);
   digitalWrite(in4b, HIGH);
   uart_receive = '\0';
-  delay(20);
+  
 }
 
 void Pause()
@@ -162,7 +174,7 @@ void Pause()
   digitalWrite(in2b, LOW);
   digitalWrite(in3b, LOW);
   digitalWrite(in4b, LOW);
-  delay(20);
+  
 }
 
 // This function lets you control spinning direction of motors (and speed)
@@ -275,7 +287,9 @@ void loop() //calls two defined functions at an interval of one second
     uart_receive = char(Serial.read());
     Serial.print(uart_receive);
   }
-  //delay(20);
+
+  
+  delay(20);
   directionControl();
   
   //speedControl();
