@@ -6,9 +6,6 @@
 
 BluetoothSerial SerialBT; //declares the Bluetooth object
 
-#define LED 32
-#define BUTTON 14
-
 void setup() {
   pinMode(LED, OUTPUT);
   pinMode(BUTTON, INPUT);
@@ -18,11 +15,9 @@ void setup() {
   SerialBT.begin("ESP32_Hooks_On_Mars");  //begins Bluetooth Serial connection
   Serial.println("Started successfully.");
 
-  digitalWrite(LED, LOW);
 }
 
 char readIn;
-int bright = 0;
 
 void loop() {
   

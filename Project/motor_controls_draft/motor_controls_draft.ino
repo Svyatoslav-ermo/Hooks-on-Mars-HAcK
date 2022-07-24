@@ -48,7 +48,7 @@ void setup() //rename later as "initialState" to avoid the other setup function
 }
 
 char uart_receive;
-int gear = 0;
+int gear;
 
 //Setting gear levels for robot to move at different speeds at different gears.
 //The user can press numbered keys to either move up or down the gears, thus increasing or decreasing the speed.
@@ -120,8 +120,8 @@ void directionControl()
   {
     digitalWrite(in1a, LOW);
     digitalWrite(in2a, LOW);
-    digitalWrite(in3b, LOW);
-    digitalWrite(in4b,LOW);
+    digitalWrite(in3a, LOW);
+    digitalWrite(in4a, LOW);
     
     digitalWrite(in1b, LOW);
     digitalWrite(in2b, LOW);
@@ -129,75 +129,69 @@ void directionControl()
     digitalWrite(in4b, LOW);
   }
   
-  {
-   // For PWM the range is from 0 to 255
-    gear = gear1;
-    analogWrite(enA, gear);
-    analogWrite(enB, gear);
-    analogWrite(enC, gear);
-    analogWrite(enD, gear);
-
-    if (uart_receive == '1')
-    {
-      gear = gear1;
-      analogWrite(enA, gear);
-      analogWrite(enB, gear);
-      analogWrite(enC, gear);
-      analogWrite(enD, gear);
-      uart_receive = '\0';
-      delay(20);
-    }
-    else if (uart_receive == '2')
-    {
-      gear = gear2;
-      analogWrite(enA, gear);
-      analogWrite(enB, gear);
-      analogWrite(enC, gear);
-      analogWrite(enD, gear);
-      uart_receive = '\0';
-      delay(20);
-    }
-    else if (uart_receive == '3')
-    {
-      gear = gear3;
-      analogWrite(enA, gear);
-      analogWrite(enB, gear);
-      analogWrite(enC, gear);
-      analogWrite(enD, gear);
-      uart_receive = '\0';
-      delay(20);
-    }
-    else if (uart_receive == '4')
-    {
-      gear = gear4;
-      analogWrite(enA, gear);
-      analogWrite(enB, gear);
-      analogWrite(enC, gear);
-      analogWrite(enD, gear);
-      uart_receive = '\0';
-      delay(20);
-    }
-    else if (uart_receive == '5')
-    {
-      gear = gear5;
-      analogWrite(enA, gear);
-      analogWrite(enB, gear);
-      analogWrite(enC, gear);
-      analogWrite(enD, gear);
-      uart_receive = '\0';
-      delay(20);
-    }
-    else if (uart_receive == '0') //No PWM so no speed
-    {
-      gear = gear0;
-      analogWrite(enA, gear);
-      analogWrite(enB, gear);
-      analogWrite(enC, gear);
-      analogWrite(enD, gear);
-      uart_receive = '\0';
-      delay(20);
-    }
-  }
+//  {
+//   // For PWM the range is from 0 to 255
+//    gear = 250;
+//    analogWrite(enA, 150);
+//    analogWrite(enB, 150);
+//    analogWrite(enC, 150);
+//    analogWrite(enD, 150);
+//
+//    if (uart_receive == 'c')
+//    {
+//      analogWrite(enA, 50);
+//      analogWrite(enB, 50);
+//      analogWrite(enC, 50);
+//      analogWrite(enD, 50);
+//      uart_receive = '\0';
+//      delay(20);
+//    }
+//    else if (uart_receive == 'v')
+//    {
+//      analogWrite(enA, 100);
+//      analogWrite(enB, 100);
+//      analogWrite(enC, 100);
+//      analogWrite(enD, 100);
+//      uart_receive = '\0';
+//      delay(20);
+//    }
+//    else if (uart_receive == 'b')
+//    {
+//      analogWrite(enA, 150);
+//      analogWrite(enB, 150);
+//      analogWrite(enC, 150);
+//      analogWrite(enD, 150);
+//      uart_receive = '\0';
+//      delay(20);
+//    }
+//    else if (uart_receive == 'n')
+//    {
+//      analogWrite(enA, 200);
+//      analogWrite(enB, 200);
+//      analogWrite(enC, 200);
+//      analogWrite(enD, 200);
+//      uart_receive = '\0';
+//      delay(20);
+//    }
+//    else if (uart_receive == 'm')
+//    {
+//      analogWrite(enA, 250);
+//      analogWrite(enB, 250);
+//      analogWrite(enC, 250);
+//      analogWrite(enD, 250);
+//      uart_receive = '\0';
+//      delay(20);
+//    }
+//    else if (uart_receive == 'l') //No PWM so no speed
+//    {
+//      analogWrite(enA, 0);
+//      analogWrite(enB, 0);
+//      analogWrite(enC, 0);
+//      analogWrite(enD, 0);
+//      uart_receive = '\0';
+//      delay(20);
+//    }
+//  }
    
 }
 
@@ -208,9 +202,9 @@ void loop() //calls two defined functions at an interval of one second
     uart_receive = char(Serial.read());
     Serial.print(uart_receive);
   }
-  
-  directionControl();
   delay(20);
+  directionControl();
+  
   
   //speedControl();
   //delay(20);
