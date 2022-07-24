@@ -7,10 +7,12 @@
 
 Servo myservo; // Create Servo object
 int servoPin = 13; // Define Servo pin
+int servoAngle = 10; // Set Servo angle
 BluetoothSerial SerialBT; //declares the Bluetooth object
 
 void setup() {
   myservo.attach(servoPin, 500, 2400); // attach servo
+  myservo.write(servoAngle);
   
   Serial.begin(115200); // Serial monitor
   Serial1.begin(9600); // Arduino Communication
@@ -21,8 +23,8 @@ void setup() {
 
 
 
-int servoInc = 5; // Increments to change servo angle
-int servoAngle = 10; // Set Servo angle
+int servoInc = 50; // Increments to change servo angle
+
 char readIn; // Define Bluetooth char variable
 
 void loop() 
@@ -66,51 +68,53 @@ void loop()
       Serial1.print('x');
       readIn = '\0';
   }
-
+  Serial.println(readIn);
     if (readIn == 'o' && servoAngle < 180) 
     { // if input is o and servo angle is less than 180 degrees
       servoAngle += servoInc; // Increment angle
       myservo.write(servoAngle); // Write new angle to servo
+      Serial.println("Inside increment angle");
       readIn = '\0';
   }
-
-    else if (readIn == 'l' && servoAngle > 10) { // else if input is o and servo angle is less than 180 degrees
+     // myservo.write(100); 
+    if (readIn == 'l' && servoAngle > 10) { // else if input is o and servo angle is less than 180 degrees
       servoAngle -= servoInc; // Decrement angle
       myservo.write(servoAngle); // Write new angle to servo
+      Serial.println("Inside increment angle");
       readIn = '\0';
     }
 
-    if (readIn == '1') {
-    Serial1.print('1');
-    readIn = '\0';
-  }
+//    if (readIn == '1') {
+//    Serial1.print('1');
+//    readIn = '\0';
+//  }
+//
+//    if (readIn == '2') {
+//    Serial1.print('2');
+//    readIn = '\0';
+//  }
+//
+//    if (readIn == '3') {
+//    Serial1.print('3');
+//    readIn = '\0';
+//  }
+//
+//    if (readIn == '4') {
+//    Serial1.print('4');
+//    readIn = '\0';
+//  }
+//
+//    if (readIn == '5') {
+//    Serial1.print('5');
+//    readIn = '\0';
+//  }
+//
+//    if (readIn == '0') {
+//    Serial1.print('0');
+//    readIn = '\0';
+//  }
 
-    if (readIn == '2') {
-    Serial1.print('2');
-    readIn = '\0';
-  }
-
-    if (readIn == '3') {
-    Serial1.print('3');
-    readIn = '\0';
-  }
-
-    if (readIn == '4') {
-    Serial1.print('4');
-    readIn = '\0';
-  }
-
-    if (readIn == '5') {
-    Serial1.print('5');
-    readIn = '\0';
-  }
-
-    if (readIn == '0') {
-    Serial1.print('0');
-    readIn = '\0';
-  }
-
-   delay(20);
+   delay(100);
 
     //SerialBT.println("ON!");
 
