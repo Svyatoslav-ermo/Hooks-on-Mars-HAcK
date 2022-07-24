@@ -54,7 +54,7 @@ void draw()
     myPort.write('o');
     state = 0;
   } else if (state == 8) {
-    myPort.write('l');
+    myPort.write('p');
     state = 0;
   } else if (state == 9) {
     myPort.write('m');
@@ -82,7 +82,7 @@ void keyPressed()
     state = 6;
   else if (key == 'o')
     state = 7;
-  else if (key == 'l')
+  else if (key == 'p')
     state = 8;
   else if (key == 'm')
     state = 9;
