@@ -106,7 +106,7 @@ void moveBackward()
 
 void turnLeft()
 {
-  digitalWrite(in1a, HIGH);
+  digitalWrite(in1a, LOW);
   digitalWrite(in2a, LOW);
   digitalWrite(in3a, HIGH);
   digitalWrite(in4a, LOW);
@@ -114,18 +114,18 @@ void turnLeft()
   digitalWrite(in1b, HIGH);
   digitalWrite(in2b, LOW);
   digitalWrite(in3b, LOW);
-  digitalWrite(in4b, LOW);
+  digitalWrite(in4b, HIGH);
   uart_receive = '\0';
 }
 
 void turnRight()
 {
-  digitalWrite(in1a, LOW);
+  digitalWrite(in1a, HIGH);
   digitalWrite(in2a, LOW);
   digitalWrite(in3a, HIGH);
   digitalWrite(in4a, LOW);
 
-  digitalWrite(in1b, HIGH);
+  digitalWrite(in1b, LOW);
   digitalWrite(in2b, LOW);
   digitalWrite(in3b, HIGH);
   digitalWrite(in4b, LOW);
