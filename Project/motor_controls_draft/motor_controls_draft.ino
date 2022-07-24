@@ -275,7 +275,7 @@ void loop() //calls two defined functions at an interval of one second
     uart_receive = char(Serial.read());
     Serial.print(uart_receive);
   }
-  delay(20);
+  //delay(20);
   directionControl();
   
   //speedControl();
