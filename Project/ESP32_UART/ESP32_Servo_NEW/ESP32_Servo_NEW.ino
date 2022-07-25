@@ -5,19 +5,15 @@
 #error Bluetooth is not enabled! Please run `make menuconfig` to and enable it
 #endif
 
-Servo myservoLeft;
-Servo myservoRight;
+Servo myservo;
 // Create Servo object
-int servoPinLeft = 13; // Define Servo pin
-int servoPinRight = 12;
+int servoPin = 13; // Define Servo pin
 int servoAngle = 10; // Set Servo angle
 BluetoothSerial SerialBT; //declares the Bluetooth object
 
 void setup() {
-  myservoLeft.attach(servoPinLeft, 500, 2400); // attach servo
-  myservoLeft.write(servoAngle);
-  myservoRight.attach(servoPinRight, 500, 2400);
-  myservoRight.write(servoAngle);
+  myservo.attach(servoPin, 500, 2400); // attach servo
+  myservo.write(servoAngle);
   
   Serial.begin(115200); // Serial monitor
   Serial1.begin(9600); // Arduino Communication
@@ -82,30 +78,15 @@ void loop()
     if (readIn == 'o' && servoAngle < 180) 
     { // if input is o and servo angle is less than 180 degrees
       servoAngle += servoInc; // Increment angle
-      myservoLeft.write(servoAngle); // Write new angle to servo
+      myservo.write(servoAngle); // Write new angle to servo
       Serial.println("Inside increment angle");
       readIn = '\0';
   }
      // myservoLeft.write(100); 
     if (readIn == 'l' && servoAngle > 10) { // else if input is o and servo angle is less than 180 degrees
       servoAngle -= servoInc; // Decrement angle
-      myservoLeft.write(servoAngle); // Write new angle to servo
+      myservo.write(servoAngle); // Write new angle to servo
       Serial.println("Inside increment angle");
-      readIn = '\0';
-    }
-    
-    if (readIn == 'i' && servoAngle < 180)
-    {
-      servoAngle += servoInc;
-      myservoRight.write(servoAngle);
-      Serial.println("inside increment angle");
-      readIn = '\0';
-    }
-    
-    if (readIn == 'k' && servoAngle > 10)
-    {
-      servoAngle -= servoInc;
-      myservoRight.write(servoAngle);
       readIn = '\0';
     }
 
