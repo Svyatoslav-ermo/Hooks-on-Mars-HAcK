@@ -1,31 +1,32 @@
 // include the library code:
   #include <LiquidCrystal.h>
-  
+
+// ASSIGNING PINS 
   const int rs = 7, en = 8, d4 = 9, d5 = 10, d6 = 11, d7 = 12;
   LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
   
   int count;
 
-//eyes
-  // (1) eyes 1/6
+// EYES - WEARING GLASSES!
+  // (1) eyes 1/6 (LEFT - UPPER)
   byte eyes1[8] = { B01111, B10000, B10000, B00000, B11111, B10000, B10111, B10111 };
-  // (2) eyes 2/6
+  // (2) eyes 2/6 (MID - UPPER)
   byte eyes2[8] = { B11111, B00000, B00000, B00000, B11111, B00000, B11111, B11111 };
-  // (3) eyes 3/6
+  // (3) eyes 3/6 (RIGHT - UPPER)
   byte eyes3[8] = { B11110, B00001, B00001, B00000, B11111, B00001, B11101, B11101 };
-  // (4) eyes 4/6
+  // (4) eyes 4/6 (LEFT - LOWER)
   byte eyes4[8] = { B10111, B10111, B10111, B10111, B10111, B10111, B10000, B11111 };
-  // (5) eyes 5/6
+  // (5) eyes 5/6 (MID - LOWER)
   byte eyes5[8] = { B11111, B11111, B11111, B11111, B11111, B11111, B00000, B11111 };
-  // (6) eyes 6/6
+  // (6) eyes 6/6 (RIGHT - LOWER)
   byte eyes6[8] = { B11101, B11101, B11101, B11101, B11101, B11101, B00001, B11111 };
-  // (7) Glasses
+  // (7) Glasses BRIDGE
   byte glasses[8] = { B00000, B00000, B00000, B00000, B00000, B11111, B11111, B11111 };
 //sparkling
   // (8) sparkling
   byte spark[8] = { B00000, B00100, B00100, B01110, B11111, B01110, B00100, B00100 };
   
-    
+// CREATING 16X2 LCD
   void setup() {
     lcd.begin(16, 2);
     lcd.home();
@@ -33,6 +34,9 @@
   }
   
   void loop() {
+  // lcd.createChar -- defining character with the number
+  // only have to use lcd.write after defining the character with lcd.createChar
+    
     // first row
     lcd.createChar(1, eyes1);
     lcd.setCursor(0,0);
