@@ -18,7 +18,7 @@ int in4b = 13;
 int enD = 10;
 
 
-void setup() //rename later as "initialState" to avoid the other setup function
+void setup() //Function for intializing the motors to not move.
 {
   Serial.begin(9600);
   while(!Serial) 
@@ -50,20 +50,23 @@ void setup() //rename later as "initialState" to avoid the other setup function
   digitalWrite(in3b, LOW);
   digitalWrite(in4b, LOW);
 
-  // Set speed PWM for all motors
-//  analogWrite(enA, 255);
-//  analogWrite(enB, 255);
-//  analogWrite(enC, 255);
-//  analogWrite(enD, 255);
-
-  // Set speed PWM for all motors to 100
+  // Set speed PWM for all motors to 50
   analogWrite(enA, 50);
   analogWrite(enB, 50);
   analogWrite(enC, 50);
   analogWrite(enD, 50);
 }
 
-char uart_receive;
+char uart_receive; //this character is being read by input
+
+/*
+//The below code was an idea we had for changing the speed of the motors by increasing
+//or decreasing the PWM in each motor by increments of 50 based on what key we pressed.
+//We called them gears and defined them below, but during the testing phase, we did not
+//see a change in the motor speed. We believe it is due to the lack of voltage that supplies
+//the PWM to the motors.
+
+
 int gear;
 
 //Setting gear levels for robot to move at different speeds at different gears.
@@ -74,7 +77,7 @@ int gear2 = 100;
 int gear3 = 150;
 int gear4 = 200;
 int gear5 = HIGH;
-
+*/
 
 void moveForward()
 {
