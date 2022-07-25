@@ -57,20 +57,18 @@ void setup() //Function for intializing the motors to not move.
   analogWrite(enD, 50);
 }
 
-char uart_receive; //this character is being read by input
-
 /*
-//The below code was an idea we had for changing the speed of the motors by increasing
-//or decreasing the PWM in each motor by increments of 50 based on what key we pressed.
-//We called them gears and defined them below, but during the testing phase, we did not
-//see a change in the motor speed. We believe it is due to the lack of voltage that supplies
-//the PWM to the motors.
+The below code was an idea we had for changing the speed of the motors by increasing
+or decreasing the PWM in each motor by increments of 50 based on what key we pressed.
+We called them gears and defined them below, but during the testing phase, we did not
+see a change in the motor speed. We believe it is due to the lack of voltage that supplies
+the PWM to the motors.
 
 
 int gear;
 
-//Setting gear levels for robot to move at different speeds at different gears.
-//The user can press numbered keys to either move up or down the gears, thus increasing or decreasing the speed.
+Setting gear levels for robot to move at different speeds at different gears.
+The user can press numbered keys to either move up or down the gears, thus increasing or decreasing the speed.
 int gear0 = LOW;
 int gear1 = 50;
 int gear2 = 100;
@@ -79,7 +77,9 @@ int gear4 = 200;
 int gear5 = HIGH;
 */
 
-void moveForward()
+char uart_receive; //this character is being read by input
+
+void moveForward() //moves all wheels forward
 {
   digitalWrite(in1a, HIGH);
   digitalWrite(in2a, LOW);
@@ -93,7 +93,7 @@ void moveForward()
   uart_receive = '\0';
 }
 
-void moveBackward()
+void moveBackward() //moves all wheels backward
 {
   digitalWrite(in1a, LOW);
   digitalWrite(in2a, HIGH);
@@ -107,7 +107,7 @@ void moveBackward()
   uart_receive = '\0';
 }
 
-void turnLeft()
+void turnLeft() //controls certain wheels to move robot to the left
 {
   digitalWrite(in1a, LOW);
   digitalWrite(in2a, LOW);
@@ -121,7 +121,7 @@ void turnLeft()
   uart_receive = '\0';
 }
 
-void turnRight()
+void turnRight() //controls certain wheels to move robot to the right
 {
   digitalWrite(in1a, HIGH);
   digitalWrite(in2a, LOW);
@@ -135,7 +135,7 @@ void turnRight()
   uart_receive = '\0';
 }
 
-void reverseLeft()
+void reverseLeft() //controls certain wheels to reverse robot to the left
 {
   digitalWrite(in1a, LOW);
   digitalWrite(in2a, HIGH);
@@ -149,7 +149,7 @@ void reverseLeft()
   uart_receive = '\0';
 }
 
-void reverseRight()
+void reverseRight() //controls certain wheels to reverse robot to the right
 {
   digitalWrite(in1a, LOW);
   digitalWrite(in2a, HIGH);
@@ -162,7 +162,7 @@ void reverseRight()
   digitalWrite(in4b, LOW);
   uart_receive = '\0';
 }
-void Dance()
+void Dance() //Unfinished code to make robot dance to cupid shuffle
 {
   turnRight();
   delay(50);
@@ -190,7 +190,7 @@ void Dance()
   reverseLeft();
   delay(10);
 }
-void Pause()
+void Pause() //turns off all motors as a robot's resting phase
 {
   digitalWrite(in1a, LOW);
   digitalWrite(in2a, LOW);
@@ -203,13 +203,14 @@ void Pause()
   digitalWrite(in4b, LOW);
 }
 
-// This function lets you control spinning direction of motors (and speed)
+// This function lets you control spinning direction of motors 
 void directionControl() 
 {
   Pause();
   
   //these If statements control the direction of the robot by controlling the direction
   //of the motors (clockwise or counterclockwise) when you press the w,a,s,d keys. 
+  //Z and X are the reverse keys. M is the dance key.
   
   if (uart_receive == 'w')
   {
@@ -244,71 +245,77 @@ void directionControl()
     Pause();
   }
   
-//  {
-//   // For PWM the range is from 0 to 255
-//    gear = 250;
-//    analogWrite(enA, 150);
-//    analogWrite(enB, 150);
-//    analogWrite(enC, 150);
-//    analogWrite(enD, 150);
-//
-//    if (uart_receive == 'c')
-//    {
-//      analogWrite(enA, 50);
-//      analogWrite(enB, 50);
-//      analogWrite(enC, 50);
-//      analogWrite(enD, 50);
-//      uart_receive = '\0';
-//      delay(20);
-//    }
-//    else if (uart_receive == 'v')
-//    {
-//      analogWrite(enA, 100);
-//      analogWrite(enB, 100);
-//      analogWrite(enC, 100);
-//      analogWrite(enD, 100);
-//      uart_receive = '\0';
-//      delay(20);
-//    }
-//    else if (uart_receive == 'b')
-//    {
-//      analogWrite(enA, 150);
-//      analogWrite(enB, 150);
-//      analogWrite(enC, 150);
-//      analogWrite(enD, 150);
-//      uart_receive = '\0';
-//      delay(20);
-//    }
-//    else if (uart_receive == 'n')
-//    {
-//      analogWrite(enA, 200);
-//      analogWrite(enB, 200);
-//      analogWrite(enC, 200);
-//      analogWrite(enD, 200);
-//      uart_receive = '\0';
-//      delay(20);
-//    }
-//    else if (uart_receive == 'm')
-//    {
-//      analogWrite(enA, 250);
-//      analogWrite(enB, 250);
-//      analogWrite(enC, 250);
-//      analogWrite(enD, 250);
-//      uart_receive = '\0';
-//      delay(20);
-//    }
-//    else if (uart_receive == 'l') //No PWM so no speed
-//    {
-//      analogWrite(enA, 0);
-//      analogWrite(enB, 0);
-//      analogWrite(enC, 0);
-//      analogWrite(enD, 0);
-//      uart_receive = '\0';
-//      delay(20);
-//    }
-//  }
-   
+  /*
+  The code below was meant for changing the PWM for the motors based on what key
+  was pressed. We defined each key as "gears". The higher the gear, the faster the wheels went.
+  Unfortunately we were not able to change the PWM of the motors.
+  {
+   // For PWM the range is from 0 to 255
+    gear = 250;
+    analogWrite(enA, 150);
+    analogWrite(enB, 150);
+    analogWrite(enC, 150);
+    analogWrite(enD, 150);
+
+    if (uart_receive == 'c')
+    {
+      analogWrite(enA, 50);
+      analogWrite(enB, 50);
+      analogWrite(enC, 50);
+      analogWrite(enD, 50);
+      uart_receive = '\0';
+      delay(20);
+    }
+    else if (uart_receive == 'v')
+    {
+      analogWrite(enA, 100);
+      analogWrite(enB, 100);
+      analogWrite(enC, 100);
+      analogWrite(enD, 100);
+      uart_receive = '\0';
+      delay(20);
+    }
+    else if (uart_receive == 'b')
+    {
+      analogWrite(enA, 150);
+      analogWrite(enB, 150);
+      analogWrite(enC, 150);
+      analogWrite(enD, 150);
+      uart_receive = '\0';
+      delay(20);
+    }
+    else if (uart_receive == 'n')
+    {
+      analogWrite(enA, 200);
+      analogWrite(enB, 200);
+      analogWrite(enC, 200);
+      analogWrite(enD, 200);
+      uart_receive = '\0';
+      delay(20);
+    }
+    else if (uart_receive == 'm')
+    {
+      analogWrite(enA, 250);
+      analogWrite(enB, 250);
+      analogWrite(enC, 250);
+      analogWrite(enD, 250);
+      uart_receive = '\0';
+      delay(20);
+    }
+    else if (uart_receive == 'l') //No PWM so no speed
+    {
+      analogWrite(enA, 0);
+      analogWrite(enB, 0);
+      analogWrite(enC, 0);
+      analogWrite(enD, 0);
+      uart_receive = '\0';
+      delay(20);
+    }
+  }   
 }
+*/
+  
+  
 
 void loop() //calls two defined functions at an interval of one second
 {
@@ -317,11 +324,6 @@ void loop() //calls two defined functions at an interval of one second
     uart_receive = char(Serial.read());
     Serial.print(uart_receive);
   }
-
-  
   delay(20);
   directionControl();
-  
-  //speedControl();
-  //delay(20);
 }
