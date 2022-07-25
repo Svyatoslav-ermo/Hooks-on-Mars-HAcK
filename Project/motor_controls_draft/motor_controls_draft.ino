@@ -177,6 +177,15 @@ void Dance()
   delay(50);
   turnLeft();
   delay(50);
+  
+  reverseRight();
+  delay(10);
+  reverseLeft();
+  delay(10);
+  reverseRight();
+  delay(10);
+  reverseLeft();
+  delay(10);
 }
 void Pause()
 {
