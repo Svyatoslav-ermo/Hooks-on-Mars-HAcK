@@ -96,7 +96,7 @@ void loop()
      // myservoLeft.write(100); 
     if (readIn == 'k' && servoAngle < 180) 
     { // else if input is o and servo angle is less than 180 degrees
-      servoAngle -= servoInc; // Decrement angle
+      servoAngle += servoInc; // Decrement angle
       myservoRight.write(servoAngle); // Write new angle to servo
       Serial.println("Inside increment angle");
       readIn = '\0';
