@@ -7,14 +7,14 @@
 
 Servo myservoLeft;
 Servo myservoRight;
-// Create Servo object
-int servoPinLeft = 13; // Define Servo pin
+// Create Servo objects for the arms
+int servoPinLeft = 13; // Define Servo pins
 int servoPinRight = 12;
 int servoAngle = 10; // Set Servo angle
 BluetoothSerial SerialBT; //declares the Bluetooth object
 
 void setup() {
-  myservoLeft.attach(servoPinLeft, 500, 2400); // attach servo
+  myservoLeft.attach(servoPinLeft, 500, 2400); // attach servo to the two arms.
   myservoLeft.write(servoAngle);
   myservoRight.attach(servoPinRight, 500, 2400);
   myservoRight.write(servoAngle);
@@ -87,36 +87,23 @@ void loop()
       readIn = '\0';
     }
     if (readIn == 'p' && servoAngle > 10) 
-    {// else if input is o and servo angle is less than 180 degrees
+    { // else if input is p and servo angle is more than 10 degrees
       servoAngle -= servoInc; // Decrement angle
       myservoLeft.write(servoAngle); // Write new angle to servo
       Serial.println("Inside increment angle");
       readIn = '\0';
     }
-
-
-    }
-    if (readIn == 'k' && servoAngle < 180) { // else if input is o and servo angle is less than 180 degrees
-      servoAngle += servoInc; // Decrement angle
-
     if (readIn == 'k' && servoAngle < 180) 
-    { // else if input is o and servo angle is less than 180 degrees
+    { // else if input is k and servo angle is less than 180 degrees
       servoAngle += servoInc; // Decrement angle
       myservoRight.write(servoAngle); // Write new angle to servo
       Serial.println("Inside increment angle");
       readIn = '\0';
     }
     if (readIn == 'l' && servoAngle > 10) 
-    { // else if input is o and servo angle is less than 180 degrees
+    { // else if input is l and servo angle is more than 10 degrees
       servoAngle -= servoInc; // Decrement angle
 
-      myservoRight.write(servoAngle); // Write new angle to servo
-      Serial.println("Inside increment angle");
-      readIn = '\0';
-    }
-
-    if (readIn == 'l' && servoAngle > 10) { // else if input is o and servo angle is less than 180 degrees
-      servoAngle -= servoInc; // Decrement angle
       myservoRight.write(servoAngle); // Write new angle to servo
       Serial.println("Inside increment angle");
       readIn = '\0';
