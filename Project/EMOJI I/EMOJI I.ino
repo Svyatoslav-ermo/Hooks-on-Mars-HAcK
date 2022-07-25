@@ -6,9 +6,12 @@
   
   int count;
 
+// ALL SELECTED 16X2
   // (1)
   byte full[8] = { B11111, B11111, B11111, B11111, B11111, B11111, B11111, B11111 };
-  // (2) 
+
+// SPARKLING ON THE SUNGLASSES
+  // (2)
   byte sparkling1[8] = { B11101, B11101, B11101, B11000, B11101, B11101, B11111, B11111 };
   // (3)
   byte sparkling2[8] = { B11111, B11101, B11000, B11101, B10111, B00011, B10111, B11111 };
@@ -16,11 +19,13 @@
   byte sparkling3[8] = { B11011, B11011, B10001, B00000, B10001, B11011, B11011, B11111 };
   // (5)
   byte sparkling4[8] = { B10111, B10111, B00011, B10111, B10111, B11101, B11000, B11101 };
-  // (6)
+
+// LIPS
+  // (6) STARTING LIPS
   byte smile_left[8] = { B11100, B11100, B01100, B01100, B01100, B00110, B00111, B00011 };
-  // (7)
+  // (7) MID-PART OF LIPS
   byte smile_ctr[8] = { B00000, B00000, B00000, B00000, B00000, B00000, B11111, B11111 };
-  // (8)  
+  // (8) FINISHING LIPS 
   byte smile_right[8] = { B00111, B00111, B00110, B00110, B00110, B01110, B11100, B11000 };  
   
  // CREATING 16X2 LCD
@@ -31,6 +36,9 @@
   }
   
   void loop() {
+    // lcd.createChar -- defining character with the number
+    // only have to use lcd.write after defining the character with lcd.createChar
+    
     // first row
     lcd.createChar(1, full);
     lcd.setCursor(0,0);
