@@ -1,19 +1,22 @@
- // include the library code:
+// include the library code:
   #include <LiquidCrystal.h>
   
-
+// ASSIGNING PINS
   const int rs = 7, en = 8, d4 = 9, d5 = 10, d6 = 11, d7 = 12;
   LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
   
 
   int count;
 
+// ALL SELECTED 16X2
   // (1)
   byte full[8] = { B11111, B11111, B11111, B11111, B11111, B11111, B11111, B11111 };
+// SPARKLES
   // (2)
   byte tear1[8] = { B11111, B11111, B11101, B11101, B11000, B11101, B10101, B10111 };
   // (3)
   byte tear2[8] = { B10111, B10111, B00011, B10111, B10110, B11110, B11100, B11100 }; 
+// TEARS
   // (4)
   byte tear3[8] = { B10111, B10111, B00011, B00011, B00001, B00001, B00000, B00000 };
   // (5)
@@ -22,10 +25,11 @@
   byte tear5[8] = { B11100, B11100, B00100, B00110, B11111, B11011, B10001, B11011 };
   // (7)
   byte tear6[8] = { B00000, B00000, B00000, B00001, B00011, B11111, B11111, B11111 };
+// LIPS
   // (8)  
   byte lips[8] = { B00000, B00000, B11111, B11111, B11111, B11111, B00000, B00000 };
   
-
+//CREATING 16X3 LCD
   void setup() {
     lcd.begin(16, 2);
     lcd.home();
@@ -34,6 +38,9 @@
   
 
   void loop() {
+   // lcd.createChar -- defining character with the number
+   // only have to use lcd.write after defining the character with lcd.createChar
+   
     // first row
     lcd.createChar(1, full);
     lcd.setCursor(0,0);
