@@ -5,7 +5,7 @@ String Text = "";
 void setup()
 {
  size(600,700);                         // create window of this size
- myPort=new Serial(this, "COM5", 115200);  //COM port will likely be different, try different ones until it works (usually one of COM3-COM7)
+ myPort=new Serial(this, "COM11", 115200);  //COM port will likely be different, try different ones until it works (usually one of COM3-COM7)
  myPort.bufferUntil('\n');               //delays calling serialEvent unitl reaching '\n'
 }
 
@@ -59,6 +59,12 @@ void draw()
   } else if (state == 9) {
     myPort.write('m');
     state = 0;
+  } else if (state == 10) {
+    myPort.write('k');
+    state = 0;
+  } else if (state == 11) {
+    myPort.write('l');
+    state = 0;
   } 
   
   delay(20);
@@ -86,5 +92,9 @@ void keyPressed()
     state = 8;
   else if (key == 'm')
     state = 9;
+  else if (key == 'k')
+    state = 10;
+  else if (key == 'l')
+    state = 11;
   
 }
