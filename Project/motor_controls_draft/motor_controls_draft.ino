@@ -57,10 +57,10 @@ void setup() //rename later as "initialState" to avoid the other setup function
 //  analogWrite(enD, 255);
 
   // Set speed PWM for all motors to 100
-  analogWrite(enA, 100);
-  analogWrite(enB, 100);
-  analogWrite(enC, 100);
-  analogWrite(enD, 100);
+  analogWrite(enA, 50);
+  analogWrite(enB, 50);
+  analogWrite(enC, 50);
+  analogWrite(enD, 50);
 }
 
 char uart_receive;
