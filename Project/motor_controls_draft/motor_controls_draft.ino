@@ -159,7 +159,25 @@ void reverseRight()
   digitalWrite(in4b, LOW);
   uart_receive = '\0';
 }
-
+void Dance()
+{
+  turnRight();
+  delay(50);
+  turnRight();
+  delay(50);
+  turnRight();
+  delay(50);
+  turnRight();
+  delay(50);
+  turnLeft();
+  delay(50);
+  turnLeft();
+  delay(50);
+  turnLeft();
+  delay(50);
+  turnLeft();
+  delay(50);
+}
 void Pause()
 {
   digitalWrite(in1a, LOW);
@@ -204,6 +222,10 @@ void directionControl()
   else if (uart_receive == 'x')
   {
     reverseRight();
+  }
+  else if (uart_receieve == 'm')
+  {
+    Dance();
   }
   else if (uart_receive == '\0')
   {
