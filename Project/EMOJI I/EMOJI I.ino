@@ -23,6 +23,7 @@
   // (8)  
   byte smile_right[8] = { B00111, B00111, B00110, B00110, B00110, B01110, B11100, B11000 };  
   
+ // CREATING 16X2 LCD
   void setup() {
     lcd.begin(16, 2);
     lcd.home();
