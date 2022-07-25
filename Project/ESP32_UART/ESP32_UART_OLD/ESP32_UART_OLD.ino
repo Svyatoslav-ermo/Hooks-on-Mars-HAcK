@@ -86,14 +86,24 @@ void loop()
       Serial.println("Inside increment angle");
       readIn = '\0';
   }
-     // myservoLeft.write(100); 
     if (readIn == 'p' && servoAngle > 10) { // else if input is o and servo angle is less than 180 degrees
+      servoAngle -= servoInc; // Decrement angle
+      myservoLeft.write(servoAngle); // Write new angle to servo
+      Serial.println("Inside increment angle");
+      readIn = '\0';
+     // myservoLeft.write(100); 
+    if (readIn == 'k' && servoAngle < 180) { // else if input is o and servo angle is less than 180 degrees
       servoAngle -= servoInc; // Decrement angle
       myservoRight.write(servoAngle); // Write new angle to servo
       Serial.println("Inside increment angle");
       readIn = '\0';
     }
-
+    if (readIn == 'l' && servoAngle > 10) { // else if input is o and servo angle is less than 180 degrees
+      servoAngle -= servoInc; // Decrement angle
+      myservoRight.write(servoAngle); // Write new angle to servo
+      Serial.println("Inside increment angle");
+      readIn = '\0';
+    
 //    if (readIn == '1') {
 //    Serial1.print('1');
 //    readIn = '\0';
