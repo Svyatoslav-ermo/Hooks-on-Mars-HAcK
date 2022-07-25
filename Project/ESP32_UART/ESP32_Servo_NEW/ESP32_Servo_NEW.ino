@@ -98,7 +98,7 @@ void loop()
     {
       servoAngle += servoInc;
       myservoRight.write(servoAngle);
-      Serial.printIn("inside increment angle");
+      Serial.println("inside increment angle");
       readIn = '\0';
     }
     
